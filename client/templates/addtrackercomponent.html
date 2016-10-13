@@ -1,0 +1,25 @@
+<div *ngIf="tracker" class="client-details">
+    <h3>Tracker Details: {{tracker.simNumber}}</h3>
+    <div class="paper">
+    <p>Enter Details</p>
+    <div class="detailform">
+     <input type='hidden'  [(ngModel)] ="tracker.TrackerModelID" />
+     <input type='hidden'  [(ngModel)] ="tracker.CustomerModelID" />
+    <p> <label>Vehicke Reg.</label><input [(ngModel)] ='tracker.vehicleReg' /></p>
+     <p><label>Status</label><select [(ngModel)] ='tracker.status' >
+         <option value="A"> 
+             Active
+         </option>
+         <option value="F" >Faulty</option>
+         <option value="I">Inactive</option>
+         </select>
+     </p>
+     <p><label>Comment</label><input  [(ngModel)] ='tracker.comment' /></p>
+     <p><label>Sim Number</label><input  [(ngModel)] ='tracker.simNumber'  /></p>
+    
+      <p>
+     <button (click)="add()">Save Tracker</button>
+      
+     </p>
+    </div>
+    <p class="right"><button class="btn" (click)="goBack()">Go Back</button></p>

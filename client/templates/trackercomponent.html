@@ -1,0 +1,24 @@
+<h3>List of Devices belonging to {{customerName}}</h3>
+<div class="paper" *ngIf="trackers">
+    <button class="btn" (click)="addTracker()">Add Tracker</button>
+    <table class="customers">
+        <thead>
+            <th>Vehicle Reg.</th>
+            <th>Sim Number</th>
+            <th>Status</th>
+            <th>Comment</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let tracker of trackers' (click)="showTracker(tracker)">
+                <td>{{tracker.vehicleReg}}</td>
+                <td>{{tracker.simNumber}}</td>
+                <td>{{tracker.status}}</td>
+                <td>{{tracker.comment}}</td>
+                <td><a href='javascript:void(0)'>delete</a> </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+ <p class="right"><button class="btn" (click)="goBack()">Go Back</button></p>

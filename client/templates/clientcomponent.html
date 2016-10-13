@@ -1,0 +1,24 @@
+<div *ngIf="customer" class="client-details">
+    <h3>Client Details: {{customer.CustomerName}}</h3>
+    <div class="paper">
+    <p>Enter Client Details</p>
+    <div class="detailform">
+     <input type='hidden'  [(ngModel)] ="customer.CustomerModelID" />
+    <p> <label>Client Name</label><input [(ngModel)] ='customer.CustomerName' /></p>
+     <p><label>Client Mobile</label><input [(ngModel)] ='customer.CustomerMobile' /></p>
+     <p><label>Client phone</label><input  [(ngModel)] ='customer.CustomerPhone' /></p>
+     <p><label>Client Address St.</label><input  [(ngModel)] ='customer.CustomerAdressSt'  /></p>
+     <p> <label>Client Address Town</label><input  [(ngModel)] ='customer.CustomerAddressTown' /></p>
+     <p><label>Client Address Country</label><input  [(ngModel)] ='customer.CustomerAddressCountry' /></p>
+     <p><label>Client Type.</label><select  [(ngModel)] ='customer.CustomerKind' >
+     <option value="I">Individual</option>
+     <option value="C">Company</option>
+     </select>
+     <button (click)="save()">Save Client</button>
+     </p>
+    </div>
+    <div *ngIf="customer.CustomerModelID">
+        <a class="btnlink" (click)="viewTrackers(customer)" href="javascript:void(0);">View Trackers for this customer</a>
+    </div>
+    </div>
+</div>

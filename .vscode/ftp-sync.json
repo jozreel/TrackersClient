@@ -1,0 +1,16 @@
+{
+    "remotePath": "./Production/trackers",
+    "host": "192.168.3.24",
+    "username": "n2nadmin",
+    "password": "P8ssw0rd",
+    "port": 21,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git"
+    ]
+}

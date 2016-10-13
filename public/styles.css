@@ -1,0 +1,29 @@
+body{padding: 0; margin:0; font-family: Arial, Helvetica, sans-serif;}
+.header{background:#1976D2; width:100%; height: 80px; position: static; display: block; top:0; left:0;margin-bottom: 10px;}
+.content{margin: auto; width:1300px; color: rgba(0, 0, 0, 0.75);}
+.customers{ width: 100%; background: #fff; border: none; box-shadow: 0px 2px 2px 1px #ccc;}
+.customers tr:hover{background: #fef5ee;}
+.customers thead{text-align: left; padding:0; margin: 0; background: #838e95; border: none;}
+.customers th{height: 40px; padding: 10px; border: none;}
+.customers td{padding: 10px; color: rgba(0, 0, 0, 0.45);}
+.customers tr{cursor: pointer;}
+.customers tr:nth-child(even){background: #eaeaee;}
+.customers tr:nth-child(even):hover{background: #fef5ee;}
+.customers td a{text-decoration: none; color: #8c0000;}
+.customers td a:hover{text-decoration: underline;}
+.round-action-small{border-radius: 50%; width: 40px; height: 40px; 
+display: inline-block; background: #e27363; color: white; font-size: 20px; border: 1px solid #fff; font-weight:  bold; cursor: pointer;}
+.round-action-small:focus{outline: none;}
+.top h3{display: inline-block;}
+.left{display: block; float:left;}
+.right{display: block; float: right; margin-top: 20px;}
+.right a{ text-decoration: none; padding: 10px; background: #e27363; color: white; border: 1px solid rgba(255, 255, 255, 0.45); text-align: center; margin-right: 5px;}
+input{height: 30px; border: 1px solid #7477bc; border-radius: 3px; padding: 10px; margin-left: 20px; min-width: 300px;}
+.detailform{padding: 30px; background: rgba(225, 211, 195, 0.2); border-radius: 3px;}
+.detailform label{display: block; padding-left: 20px; padding-bottom: 5px;}
+.detailform select{margin-left: 20px; border-radius: 3px; height: 30px; border: 1px solid rgba(255, 255, 255, 0.45); font-size: 12pt; color: rgba(0, 0, 0, 0.75); }
+.detailform input{width:600px;}
+.detailform button{width: 300px; border:1px solid  #d7d1c5; background: #edece9; border-radius: 3px; margin-left:10px; height: 40px; cursor: pointer;}
+.paper{box-shadow: 1px 2px 2px 1px #ccc; margin:5px; padding: 10px; }
+.btnlink{padding:20px; margin: 10px; background: #e27363; border-radius: 3px; display: inline-block; color: white; font-weight: 700; text-decoration: none;}
+.btn{height: 30px; display: inline-block; background: #e27363; color: white;  border: 1px solid rgba(255,225,255,0.1); cursor: pointer; }
