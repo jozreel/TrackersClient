@@ -1,5 +1,6 @@
 <div ><h3>Client List</h3></div> 
-<button  class="round-action-small" (click)="addClient()" >+</button>
+<button  class="round-action-small"  (click)="addClient()" >+</button>
+<div   class="si"><input #searchbox  id ="search-box" type ="search" (keyup)="search($event,searchbox.value)" placeholder="Search for clients by name" /></div>
 <table class="customers">
   <thead>
      <th>Customer Name</th>
@@ -13,7 +14,24 @@
     <td class="badge">{{customer.CustomerMobile}}</td>
    
      <td class="badge">{{customer.Trackers.length}}</td>
-     <td><a href="javacript:void(0)"> delete </a></td>
+     <td (click)="doNothing($event,customer)"><a href="javacript:void(0)" (click)="doNothing($event,customer)" > delete </a></td>
     </tr>
       </tbody>  
 </table>   
+<div class="modal" *ngIf="showModal">
+    <div class="dbox"><p>The item has related devices and cannot be deleted</p>
+    <button (click)="hideDialog()">OK</button>
+    </div>
+    
+  </div>
+  <div class="modal" *ngIf="showel">
+   <div id="yesno" class="transo">
+     <div style="position:relative">
+     <div>
+       <p id="yesnomessage"> the message</p>
+     </div>
+     <div><button id="ynyes" (click)="deleteCustomer()">YES</button><button (click)="hideDialog()" id="ynno">NO</button></div>
+     </div>
+   </div>
+   </div>
+  

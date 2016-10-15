@@ -9,7 +9,7 @@ export class Customer
    CustomerAddressTown:string;
    CustomerAddressCountry:string;
    CustomerKind:string;
-   CustomerModelID:string;
+   CustomerModelID:number;
 
 
 }

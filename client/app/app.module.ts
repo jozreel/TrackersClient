@@ -10,13 +10,14 @@ import { ClientComponent } from './client.component';
 import {ClientList} from './listcomponent';
 import {TrackerService} from './tracker.service';
 import {AddTrackerComponent} from './addtrackercomponent'
+import {ModalDelete} from './modaldelete'
 @NgModule({
   imports:[BrowserModule,HttpModule,FormsModule, RouterModule.forRoot([
     {path:'client/:id', component:ClientComponent},{path:'client', component:ClientComponent},
     {path:'trackers/:id/:name', component:TrackerComponent}, {path:'', component:ClientList, pathMatch:'full'}, {path:'home', component:ClientList},
-    {path:'tracker/:id', component:AddTrackerComponent},{path:'addtracker/:custid', component:AddTrackerComponent}
+    {path:'tracker/:id', component:AddTrackerComponent},{path:'addtracker/:custid', component:AddTrackerComponent},{path:'delete/:id', component:ModalDelete}
   ])],
-  declarations: [HomeComponent, ClientComponent, ClientList,TrackerComponent, AddTrackerComponent],
+  declarations: [HomeComponent, ClientComponent, ClientList,TrackerComponent, AddTrackerComponent,ModalDelete],
   providers:[CustomerService,TrackerService],
   bootstrap:[ HomeComponent]
 })

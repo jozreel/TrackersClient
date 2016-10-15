@@ -43,6 +43,16 @@ export class CustomerService{
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
     }  
+    search(term: string): Observable<Customer[]> {
+      //var url = 'http://localhost:60883/api/CustomerModels?name='
+     
+    return this.http.get(this.restUrl+'?name='+term).map((r: Response) =>r.json()) .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  remove(id:number):Observable<void>{
+      const url = this.restUrl+'/'+id;
+      return this.http.delete(url, {headers:this.headers}).map((res:Response)=>res.json()).catch((error:any)=>Observable.throw(error.json().error||'Server error'));
+  }
   /*  private handleError(error: any): Observable<any> {
   console.error('An error occurred', error);
   return Promise.reject(error.message || error);
