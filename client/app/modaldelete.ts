@@ -6,8 +6,8 @@ import {ActivatedRoute, Params} from '@angular/router';
 selector:'modal-delete',
 templateUrl:'/templates/modaldelete.html'
 })
-export class ModalDelete{
-    @Input();
+export class ModalDelete{ 
+    @Input()
     id:number;
    constructor(private router:Router, private customerservice:CustomerService,private route:ActivatedRoute){
        
