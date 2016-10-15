@@ -23,5 +23,5 @@ export class ModalDelete{
               this.customerservice.remove(id).subscribe((cust)=>console.log(cust), err=>console.log('afking err', err));id
        
    });
-   }
+   } 
 }  
