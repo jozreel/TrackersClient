@@ -1,0 +1,19 @@
+<h3>Service history for tracker</h3>
+<table class="customers">
+    <thead>
+        <th>Service Date</th>
+        <th>Time In</th>
+        <th>Time Out</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let service of service " (click)="showService(service)">
+            <td><input type="date" class="no-in" disabled value="{{helper.formatDate(service.date)}}" /></td>
+            <td><input type="time" class="no-in" disabled value="{{service.timeIn}}" /> </td>
+            <td> <input type="time" class="no-in" disabled value="{{service.timeOut}}" /></td>
+        </tr>
+    </tbody>
+    
+</table>
+<p class="right">
+        <button class="btn" (click)="goBack()">Go Back</button>
+    </p>

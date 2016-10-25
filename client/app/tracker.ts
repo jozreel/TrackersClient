@@ -6,4 +6,5 @@ export class Tracker
     comment:string;
     TrackerModelID:number;
     CustomerModelID:number
+    model:string;
 } 

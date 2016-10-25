@@ -19,7 +19,7 @@
       </tbody>  
 </table>   
 <div class="modal" *ngIf="showModal">
-    <div class="dbox"><p>The item has related devices and cannot be deleted</p>
+    <div class="dbox"><p [class.warn]="isWarnig === true" >The item has related devices and cannot be deleted</p>
     <button (click)="hideDialog()">OK</button>
     </div>
     

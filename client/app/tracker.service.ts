@@ -43,4 +43,9 @@ export class TrackerService{
       //console.log(JSON.stringify(customer));
       return this.http.put(url,JSON.stringify(tracker),{headers:this.headers}).map((res:Response)=>{res.json()}).catch((error:any)=>Observable.throw(error.json().error || 'Server error'));
     }
+
+    public remove(id:number):Observable<Tracker>{
+      const url = this.restUrl+'/'+id;
+      return this.http.delete(url, {headers:this.headers}).map((res:Response)=>res.json()).catch((error:any)=>Observable.throw(error.json().error||'Server error'));
+  }
 } 

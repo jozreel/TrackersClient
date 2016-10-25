@@ -1,0 +1,32 @@
+
+<h3>Enter information </h3>
+<div *ngIf="service" class="paper">
+    <div class="detailform blockauto">
+ <input type="hidden" [(ngModel)]="service.TrackerModelID"  />
+ <div class="leftfields">
+   <p> <label>Service Date</label> <input type="date" [(ngModel)]="service.date" /></p>
+   <p> <label>Time In</label> <input type="time" [(ngModel)]="service.timeIn" /></p>
+   <p> <label>Time Out</label> <input type="time" [(ngModel)]="service.timeOut" /></p>
+    <p> <label>Device Tampering</label>  <select [(ngModel)]="service.deviceTampering"><option value="false">No</option><option value="true">Yes</option></select></p>
+    <p> <label>Wire Tampering</label> <select [(ngModel)]="service.wireTampering" ><option  value="false">No</option><option value="true">Yes</option></select></p>
+     <p> <label>Battery testing</label> <input  [(ngModel)]="service.batteryTesting" /></p>
+      <p> <label>Voltage Level</label> <input type="number" step="0.1"  [(ngModel)]="service.voltage" /></p>
+       <p> <label>Battery Type</label> <select [(ngModel)]="service.batteryType" ><option value="12">12V</option><option value="24">24V</option></select></p>
+      
+ </div>
+ <div class="rightfields">
+        <p> <label>Parts Replaced</label> <input type="text" #partname /> <button (click)="addPart(partname.value); partname.value=''">+</button> </p>
+        <div *ngIf ="service.partsReplaced.length > 0">
+            <ul>
+                <li *ngFor="let part of service.partsReplaced">  {{part.partsName}} <span (click)="removePart(part)">x</span></li>
+            </ul>
+           
+        </div>
+        
+ </div>
+     
+<p class="oof"><button (click)="addService(service)">Save</button>
+    </div>
+       
+       <p class="right"><button class="btn" (click)="goBack()" >Go Back</button></p>
+</div> 

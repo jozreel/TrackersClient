@@ -10,6 +10,8 @@ export class Customer
    CustomerAddressCountry:string;
    CustomerKind:string;
    CustomerModelID:number;
+   Trackers:Tracker[];
+   ContactName:string;
 
 
 }

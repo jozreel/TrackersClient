@@ -7,6 +7,7 @@
             <th>Sim Number</th>
             <th>Status</th>
             <th>Comment</th>
+            <th>model</th>
             <th></th>
         </thead>
         <tbody>
@@ -15,10 +16,27 @@
                 <td>{{tracker.simNumber}}</td>
                 <td>{{tracker.status}}</td>
                 <td>{{tracker.comment}}</td>
-                <td><a href='javascript:void(0)'>delete</a> </td>
+                <td>{{tracker.model}}</td>
+                <td (click)="stopProperg($event)">
+                    <a href='javascript:void(0)' (click)="serviceForm($event, tracker)">service </a> ||
+                     <a href='javascript:void(0)' (click)="serviceHistory($event, tracker.TrackerModelID)">service history </a> ||
+                    <a href='javascript:void(0)' (click)="showModalFunc($event, tracker)">delete</a>
+                
+                 </td>
             </tr>
             
         </tbody>
     </table>
 </div>
  <p class="right"><button class="btn" (click)="goBack()">Go Back</button></p>
+
+  <div class="modal" *ngIf="showel">
+   <div id="yesno" class="transo">
+     <div style="position:relative">
+     <div>
+       <p id="yesnomessage"> Are you sure you want to delete this tracker ?</p>
+     </div>
+     <div><button id="ynyes" (click)="removeTracker()">YES</button><button (click)="hideDialog()" id="ynno">NO</button></div>
+     </div>
+   </div>
+   </div>

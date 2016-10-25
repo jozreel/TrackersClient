@@ -19,9 +19,11 @@ export class ClientList implements OnInit{
  showModal:boolean;
  showel:boolean;
  customerId:number;
+ isWarnig:boolean;
     constructor(private customerService:CustomerService,private router: Router, private el:ElementRef){
         this.showModal=false;
         this.showel = false;
+        this.isWarnig = false;
     }  
 
     getCustomers():void{
@@ -61,15 +63,20 @@ export class ClientList implements OnInit{
        this.showel = true;
     }
     else
+    {
+      this.isWarnig = true;
        this.showModal=true;
+       
+    }
     event.stopPropagation();
   }
   hideDialog():void{
     this.showModal = false;
+             console.log(this.customerId);
     this.showel = false;
+    this.isWarnig = false;
   }
  deleteCustomer():void{
-             console.log(this.customerId);
             if(this.customerId)
             {
               

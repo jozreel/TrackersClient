@@ -5,7 +5,7 @@ import { ActivatedRoute, Params, Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Location }                 from '@angular/common';
 import {Tracker} from './tracker';
-
+import {Helpers} from './helpers';
 @Component(
     {
         selector:'client-detail',
@@ -15,7 +15,7 @@ import {Tracker} from './tracker';
 export class ClientComponent implements OnInit{
     // @Input()
     customer:Customer;
-    constructor(private customerService:CustomerService, private route: ActivatedRoute, private location: Location, private router:Router){
+    constructor(private customerService:CustomerService, private route: ActivatedRoute, private location: Location, private router:Router, private helper:Helpers){
         
     }
    viewTrackers(customer:Customer):void{
@@ -26,16 +26,28 @@ export class ClientComponent implements OnInit{
     save():void{
         this.route.params.forEach((params: Params) => {
          let id =+params['id'];
+         
+           var mob= this.helper.formatTel(this.customer.CustomerMobile);
+             
+              var tel = this.helper.formatTel(this.customer.CustomerPhone);
+              this.customer.CustomerPhone = tel;
+             if(mob!=='')
+             {
+               this.customer.CustomerMobile = mob;
+             
          if(!id)
          {
-             console.log('hola')
+            
              this.customerService.create(this.customer).subscribe((customer) =>this.goBack(), err=>{'afking err', console.log(err.message)});
+             
          }
          else
          {
              console.log('old');
-             this.customerService.update(this.customer).subscribe((customer)=>console.log('saved'),err=>{console.log('afking err',err.message)});
+             
+            this.customerService.update(this.customer).subscribe((customer)=>console.log('saved'),err=>{console.log('afking err',err.message)});
          }
+        }
         });
     }
     ngOnInit(): void {
@@ -55,5 +67,6 @@ export class ClientComponent implements OnInit{
    goBack(): void {
     this.location.back();
   }
-  
+
+   
 } 

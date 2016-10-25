@@ -4,6 +4,7 @@ import{TrackerService} from './tracker.service';
 import{ActivatedRoute, Params} from '@angular/router'
 import { Observable } from 'rxjs/Observable';
 import { Location }                 from '@angular/common';
+import {Helpers} from './helpers';
 @Component({
     templateUrl:'/templates/addtrackercomponent.html',
     selector:'tracker-display'
@@ -12,7 +13,7 @@ import { Location }                 from '@angular/common';
     tracker:Tracker;
     customerName:string;
     customerId:number;
-    constructor(private trackerservice:TrackerService, private route:ActivatedRoute,private location:Location)
+    constructor(private trackerservice:TrackerService, private route:ActivatedRoute,private location:Location, private helper:Helpers)
     {
 
     }
@@ -34,6 +35,13 @@ import { Location }                 from '@angular/common';
     add():void{
          this.route.params.forEach((params: Params) => {
          let id =+params['id'];
+           var mob= this.helper.formatTel(this.tracker.simNumber);
+             
+            
+             if(mob!=='')
+             {
+               this.tracker.simNumber= mob;
+             
          if(!id)
          {
              console.log('hola')
@@ -44,6 +52,7 @@ import { Location }                 from '@angular/common';
              console.log('old');
              this.trackerservice.update(this.tracker).subscribe((tracker)=>console.log('saved'),err=>{console.log('afking err',err.message)});
          }
+             }
         });
     }
     goBack():void{
