@@ -13,6 +13,7 @@ import {Helpers} from './helpers';
 })export class ServiceComponent{
      service:Service;
      trackerId:number;
+     showSpin:boolean = false;
     // parts:Part[];
     constructor(private serviceReqService:ServiceReqService, private route:ActivatedRoute, private location:Location,private helper:Helpers)
     {
@@ -37,14 +38,15 @@ import {Helpers} from './helpers';
      // th
     }
     addService(service:Service):void{
+          this.showSpin = true;
         // if(this.service.partsReplaced.length > 0)
            // this.service.partsReplaced = this.parts;
          if(!service.ServiceModelID)
-            this.serviceReqService.addServiveReq(service).subscribe((serv)=>this.goBack(), (err)=>console.log('afkingerr', err));
+            this.serviceReqService.addServiveReq(service).subscribe((serv)=>this.goBack(), (err)=>{this.showSpin = false; console.log('afkingerr', err);});
           else
           {
             
-              this.serviceReqService.saveServiveReq(service).subscribe((serv)=>this.goBack(), (err)=>console.log('afkingerr', err));
+              this.serviceReqService.saveServiveReq(service).subscribe((serv)=>this.showSpin = false, (err)=>{this.showSpin = false; console.log('afkingerr', err);});
           }
     }
     addPart(partnm:string):void{
@@ -64,6 +66,7 @@ import {Helpers} from './helpers';
         this.service.partsReplaced.splice(ind,1);
     }
       goBack():void{
+          this.showSpin = false;
          this.location.back();
 
     }

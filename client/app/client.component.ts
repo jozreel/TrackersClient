@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Location }                 from '@angular/common';
 import {Tracker} from './tracker';
 import {Helpers} from './helpers';
+import {Country} from './country';
 @Component(
     {
         selector:'client-detail',
@@ -15,6 +16,8 @@ import {Helpers} from './helpers';
 export class ClientComponent implements OnInit{
     // @Input()
     customer:Customer;
+    countries:Country[];
+    showSpin:boolean = false;
     constructor(private customerService:CustomerService, private route: ActivatedRoute, private location: Location, private router:Router, private helper:Helpers){
         
     }
@@ -24,6 +27,7 @@ export class ClientComponent implements OnInit{
    }   
     
     save():void{
+        this.showSpin = true;
         this.route.params.forEach((params: Params) => {
          let id =+params['id'];
          
@@ -38,19 +42,20 @@ export class ClientComponent implements OnInit{
          if(!id)
          {
             
-             this.customerService.create(this.customer).subscribe((customer) =>this.goBack(), err=>{'afking err', console.log(err.message)});
+             this.customerService.create(this.customer).subscribe((customer) =>this.goBack(), err=>{ this.showSpin=false; console.log(err.message)});
              
          }
          else
          {
              console.log('old');
              
-            this.customerService.update(this.customer).subscribe((customer)=>console.log('saved'),err=>{console.log('afking err',err.message)});
+            this.customerService.update(this.customer).subscribe((customer)=> this.showSpin=false,err=>{ this.showSpin=false; console.log('afking err',err.message);});
          }
         }
         });
     }
     ngOnInit(): void {
+         this.customerService.countries().subscribe((country)=>this.countries= country, (err)=>console.log('afking err', err));
          this.route.params.forEach((params: Params) => {
          let id =+params['id'];
          if(id)
@@ -65,6 +70,7 @@ export class ClientComponent implements OnInit{
      // this.getCustomers();
   }
    goBack(): void {
+       this.showSpin =false ;
     this.location.back();
   }
 

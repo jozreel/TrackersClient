@@ -52,5 +52,21 @@ export class Helpers{
     return date.substr(0,10);
  }
 
+ public formatVehicleReG(vreg : string):string
+ {
+   vreg = vreg.replace('-','');
+   var ret = '';
+   if(vreg.length >=2)
+    ret+= vreg.substr(0,2);
+   if(vreg.length>=3)
+   {
+   ret+= '-';
+   ret += vreg.substr(2);
+   }
+   console.log(ret);
+   return ret;
+
+ }
+
 }
 

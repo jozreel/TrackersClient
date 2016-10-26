@@ -4,7 +4,6 @@ import{TrackerService} from './tracker.service';
 import{ActivatedRoute, Params, Router} from '@angular/router'
 import { Observable } from 'rxjs/Observable';
 import { Location }                 from '@angular/common';
-
 @Component({
     templateUrl:'/templates/trackercomponent.html',
     selector:'tracker-list'

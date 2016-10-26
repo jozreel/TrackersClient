@@ -16,7 +16,9 @@
      <p><label>Client phone</label><input  [(ngModel)] ='customer.CustomerPhone' /></p>
      <p><label>Client Address St.</label><input  [(ngModel)] ='customer.CustomerAdressSt'  /></p>
      <p> <label>Client Address Town</label><input  [(ngModel)] ='customer.CustomerAddressTown' /></p>
-     <p><label>Client Address Country</label><input  [(ngModel)] ='customer.CustomerAddressCountry' />
+     <p><label>Client Address Country</label><select  [(ngModel)] ='customer.CustomerAddressCountry' >
+         <option  *ngFor="let country of countries" value="{{country.code}}">{{country.name}}</option>
+         </select>
      </p>
       <button (click)="save()">Save Client</button>
        <div *ngIf="customer.CustomerModelID">
@@ -26,3 +28,4 @@
    
     </div>
 </div>
+<spin-loader *ngIf="showSpin"></spin-loader>
